@@ -1,9 +1,10 @@
 # Golang-Gin-Gorm Project Template
 
-Go Gin WebFramework + Gorm 프로젝트 템플릿
+Go Gin WebFramework + Gorm + Wire
 
 - [Gin WebFramework](https://github.com/gin-gonic/gin)
 - [GORM](https://gorm.io/index.html)
+- [Wire](https://github.com/google/wire)
 
 ```shell
 Controllers -> Services -> Repositories -> Models 
@@ -12,14 +13,16 @@ Controllers -> Services -> Repositories -> Models
 ```shell
 Dependency Injection
 wire
+
+'go run github.com/google/wire/cmd/wire'
 ```
 
 ```shell
-go run main.go wire_gen.go
+go run .
 ```
 
 ```shell
-go build main.go wire_gen.go
+go build .
 ./main
 ```
 

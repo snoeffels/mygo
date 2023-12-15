@@ -1,4 +1,6 @@
+.idea
 # Binaries for programs and plugins
+mygo
 *.exe
 *.exe~
 *.dll
