@@ -30,8 +30,8 @@ import (
 // @BasePath /api/v1
 // @query.collection.format multi
 
-// @title Todo API
-// @description Todo microservice API
+// @title Golang Project Template
+// @description This is a template project for upcoming golang project ideas. It uses gorm as ORM with Postgres and also uses JWT auth middleware if GIN_MODE=release is set in .env / .env-docker
 // @schemes http https
 // @securityDefinitions.apikey ApiKeyAuth
 // @in header
