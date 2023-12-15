@@ -36,7 +36,7 @@ func InitPostgres() (*gorm.DB, error) {
 		panic(err)
 	}
 
-	if err = db.AutoMigrate(&models.Todo{}, &models.Location{}); err != nil {
+	if err = db.AutoMigrate(&models.Todo{}); err != nil {
 		return nil, err
 	}
 
