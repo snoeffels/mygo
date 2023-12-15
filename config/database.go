@@ -4,6 +4,7 @@ import (
 	"errors"
 	"fmt"
 	"github.com/caarlos0/env"
+	"github.com/snoeffels/mygo/models"
 	"gorm.io/driver/postgres"
 	"gorm.io/gorm"
 )
@@ -33,6 +34,10 @@ func InitPostgres() (*gorm.DB, error) {
 	db, err := gorm.Open(postgres.Open(dsn), &gorm.Config{})
 	if err != nil {
 		panic(err)
+	}
+
+	if err = db.AutoMigrate(&models.Todo{}, &models.Location{}); err != nil {
+		return nil, err
 	}
 
 	return db, nil

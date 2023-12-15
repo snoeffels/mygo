@@ -6,6 +6,8 @@ Go Gin WebFramework + Gorm + Wire
 - [GORM](https://gorm.io/index.html)
 - [Wire](https://github.com/google/wire)
 
+Token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMjM0NTY3ODkwIiwibmFtZSI6IkpvaG4gRG9lIiwiaWF0IjoxNTE2MjM5MDIyfQ.vZa-SKJgVgooNmaQeYbk8KxbsSohjoDm0-_rxm96FZw
+
 ```shell
 Controllers -> Services -> Repositories -> Models 
 ```

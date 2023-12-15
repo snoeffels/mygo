@@ -45,8 +45,7 @@ func main() {
 	var err error
 	var dbHandler dbHandlers
 
-	err = godotenv.Load() // This will load your .env file
-	if err != nil {
+	if err = godotenv.Load(); err != nil {
 		log.Fatal("Error loading .env file")
 	}
 
@@ -54,6 +53,7 @@ func main() {
 	if err != nil {
 		panic(err)
 	}
+
 	sqlDB, _ := dbHandler.db.DB()
 
 	defer func(sqlDB *sql.DB) {
@@ -69,16 +69,13 @@ func main() {
 func initRoutes(dbHandler dbHandlers) *gin.Engine {
 	r := gin.Default()
 
-	// CORS allows all origins
 	conf := cors.DefaultConfig()
 	conf.AllowAllOrigins = true
 	r.Use(cors.New(conf))
 
-	// Project routes
 	todoAPI := initTodoAPI(dbHandler.db)
 	routes.TodoRoute(r, todoAPI)
 
-	// Swagger Settings
 	r.GET("/swagger/*any", ginSwagger.WrapHandler(swaggerFiles.Handler))
 
 	return r
