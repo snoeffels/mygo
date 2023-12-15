@@ -1,4 +1,4 @@
-# Golang-Gin-Gorm Project Template
+# Golang-Gin-Gorm-Postgres boilerplate
 
 This is a template project for upcoming golang project ideas.
 It uses gorm as ORM with Postgres and also uses JWT auth middleware 
