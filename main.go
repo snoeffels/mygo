@@ -76,7 +76,7 @@ func initRoutes(dbHandler dbHandlers) *gin.Engine {
 	todoAPI := initTodoAPI(dbHandler.db)
 	api.TodoRoute(r, todoAPI)
 
-	r.GET("/swagger/*any", ginSwagger.WrapHandler(swaggerFiles.Handler))
+	r.GET("/swagger-ui/*any", ginSwagger.WrapHandler(swaggerFiles.Handler))
 
 	return r
 }
