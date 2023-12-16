@@ -18,13 +18,14 @@ func TokenAuthMiddleware() gin.HandlerFunc {
 
 			token := c.Request.Header.Get("Authorization")
 			if token == "" {
-				c.JSON(http.StatusForbidden, models.APIError{Error: "No authorization header provided"})
+				models.SendErrorResponse(c, http.StatusForbidden, "No authorization header provided")
 				c.Abort()
 				return
 			}
 
 			_, err := tokenValid(c.Request)
 			if err != nil {
+				models.SendSimpleErrorResponse(c, http.StatusUnauthorized)
 				c.JSON(http.StatusUnauthorized, models.APIError{Error: "Unauthorized"})
 				c.Abort()
 				return
