@@ -35,7 +35,7 @@ func (t *TodoAPI) FindAll(c *gin.Context) {
 
 	todos, err := t.TodoService.FindAll()
 	if err != nil {
-		models.SendErrorResponse(c, http.StatusInternalServerError, err.Error())
+		SendErrorResponse(c, http.StatusInternalServerError, err.Error())
 		return
 	}
 
@@ -58,12 +58,12 @@ func (t *TodoAPI) Create(c *gin.Context) {
 	var todo models.Todo
 	err := c.BindJSON(&todo)
 	if err != nil {
-		models.SendErrorResponse(c, http.StatusBadRequest, err.Error())
+		SendErrorResponse(c, http.StatusBadRequest, err.Error())
 		return
 	}
 	err = t.TodoService.Create(&todo)
 	if err != nil {
-		models.SendErrorResponse(c, http.StatusInternalServerError, err.Error())
+		SendErrorResponse(c, http.StatusInternalServerError, err.Error())
 		return
 	}
 
@@ -86,13 +86,13 @@ func (t *TodoAPI) FindById(c *gin.Context) {
 	p := c.Param("id")
 	id, err := strconv.Atoi(p)
 	if err != nil {
-		models.SendErrorResponse(c, http.StatusBadRequest, err.Error())
+		SendErrorResponse(c, http.StatusBadRequest, err.Error())
 		return
 	}
 
 	todo, err := t.TodoService.FindById(uint(id))
 	if err != nil {
-		models.SendSimpleErrorResponse(c, http.StatusNotFound)
+		SendSimpleErrorResponse(c, http.StatusNotFound)
 		return
 	}
 
@@ -117,26 +117,26 @@ func (t *TodoAPI) Update(c *gin.Context) {
 	p := c.Param("id")
 	id, err := strconv.Atoi(p)
 	if err != nil {
-		models.SendErrorResponse(c, http.StatusBadRequest, err.Error())
+		SendErrorResponse(c, http.StatusBadRequest, err.Error())
 		return
 	}
 
 	todo, err := t.TodoService.FindById(uint(id))
 	if err != nil {
-		models.SendErrorResponse(c, http.StatusNotFound, err.Error())
+		SendErrorResponse(c, http.StatusNotFound, err.Error())
 		return
 	}
 
 	var updateTodo models.Todo
-	err = c.BindJSON(&todo)
+	err = c.BindJSON(&updateTodo)
 	if err != nil {
-		models.SendErrorResponse(c, http.StatusBadRequest, err.Error())
+		SendErrorResponse(c, http.StatusBadRequest, err.Error())
 		return
 	}
 
 	err = t.TodoService.Update(&todo, &updateTodo)
 	if err != nil {
-		models.SendErrorResponse(c, http.StatusInternalServerError, err.Error())
+		SendErrorResponse(c, http.StatusInternalServerError, err.Error())
 		return
 	}
 
@@ -160,19 +160,19 @@ func (t *TodoAPI) Delete(c *gin.Context) {
 	p := c.Param("id")
 	id, err := strconv.Atoi(p)
 	if err != nil {
-		models.SendErrorResponse(c, http.StatusBadRequest, err.Error())
+		SendErrorResponse(c, http.StatusBadRequest, err.Error())
 		return
 	}
 
 	todo, err := t.TodoService.FindById(uint(id))
 	if err != nil {
-		models.SendErrorResponse(c, http.StatusNotFound, err.Error())
+		SendErrorResponse(c, http.StatusNotFound, err.Error())
 		return
 	}
 
 	err = t.TodoService.DeleteById(&todo, uint(id))
 	if err != nil {
-		models.SendErrorResponse(c, http.StatusInternalServerError, err.Error())
+		SendErrorResponse(c, http.StatusInternalServerError, err.Error())
 		return
 	}
 
