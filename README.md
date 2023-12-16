@@ -44,5 +44,7 @@ curl https://reqbin.com/echo/get/json
 
 ### Generate dependency injection using googles go:wire
 ```shell
+go install github.com/google/wire/cmd/wire
+
 go run github.com/google/wire/cmd/wire
 ```
