@@ -19,9 +19,9 @@ import (
 
 // Injectors from wire.go:
 
-func initTodoAPI(db *gorm.DB) api.TodoAPI {
+func initTodoAPI(db *gorm.DB) api.TodoController {
 	todoRepository := persistence.ProvideTodoRepository(db)
 	todoService := persistence.ProvideTodoService(todoRepository)
-	todoAPI := api.ProvideTodoAPI(todoService)
-	return todoAPI
+	todoController := api.ProvideTodoAPI(todoService)
+	return todoController
 }

@@ -8,12 +8,12 @@ import (
 	"strconv"
 )
 
-type TodoAPI struct {
+type TodoController struct {
 	TodoService persistence.TodoService
 }
 
-func ProvideTodoAPI(t persistence.TodoService) TodoAPI {
-	return TodoAPI{TodoService: t}
+func ProvideTodoAPI(t persistence.TodoService) TodoController {
+	return TodoController{TodoService: t}
 }
 
 // FindAll godoc
@@ -26,7 +26,7 @@ func ProvideTodoAPI(t persistence.TodoService) TodoAPI {
 // @Success 200 {array} models.Todo
 // @Failure 500 {object} models.APIError
 // @Router /todo [get]
-func (t *TodoAPI) FindAll(c *gin.Context) {
+func (t *TodoController) FindAll(c *gin.Context) {
 	// Usage Roles
 	//roles, ok := c.Get("roles")
 	//if !ok {
@@ -35,7 +35,7 @@ func (t *TodoAPI) FindAll(c *gin.Context) {
 
 	todos, err := t.TodoService.FindAll()
 	if err != nil {
-		SendErrorResponse(c, http.StatusInternalServerError, err.Error())
+		models.SendErrorResponse(c, http.StatusInternalServerError, err.Error())
 		return
 	}
 
@@ -54,16 +54,16 @@ func (t *TodoAPI) FindAll(c *gin.Context) {
 // @Failure 400 {object} models.APIError
 // @Failure 500 {object} models.APIError
 // @Router /todo [post]
-func (t *TodoAPI) Create(c *gin.Context) {
+func (t *TodoController) Create(c *gin.Context) {
 	var todo models.Todo
 	err := c.BindJSON(&todo)
 	if err != nil {
-		SendErrorResponse(c, http.StatusBadRequest, err.Error())
+		models.SendErrorResponse(c, http.StatusBadRequest, err.Error())
 		return
 	}
 	err = t.TodoService.Create(&todo)
 	if err != nil {
-		SendErrorResponse(c, http.StatusInternalServerError, err.Error())
+		models.SendErrorResponse(c, http.StatusInternalServerError, err.Error())
 		return
 	}
 
@@ -82,17 +82,17 @@ func (t *TodoAPI) Create(c *gin.Context) {
 // @Failure 400 {object} models.APIError
 // @Failure 404 {object} models.APIError
 // @Router /todo/{id} [get]
-func (t *TodoAPI) FindById(c *gin.Context) {
+func (t *TodoController) FindById(c *gin.Context) {
 	p := c.Param("id")
 	id, err := strconv.Atoi(p)
 	if err != nil {
-		SendErrorResponse(c, http.StatusBadRequest, err.Error())
+		models.SendErrorResponse(c, http.StatusBadRequest, err.Error())
 		return
 	}
 
 	todo, err := t.TodoService.FindById(uint(id))
 	if err != nil {
-		SendSimpleErrorResponse(c, http.StatusNotFound)
+		models.SendSimpleErrorResponse(c, http.StatusNotFound)
 		return
 	}
 
@@ -113,30 +113,30 @@ func (t *TodoAPI) FindById(c *gin.Context) {
 // @Failure 404 {object} models.APIError
 // @Failure 500 {object} models.APIError
 // @Router /todo/{id} [put]
-func (t *TodoAPI) Update(c *gin.Context) {
+func (t *TodoController) Update(c *gin.Context) {
 	p := c.Param("id")
 	id, err := strconv.Atoi(p)
 	if err != nil {
-		SendErrorResponse(c, http.StatusBadRequest, err.Error())
+		models.SendErrorResponse(c, http.StatusBadRequest, err.Error())
 		return
 	}
 
 	todo, err := t.TodoService.FindById(uint(id))
 	if err != nil {
-		SendErrorResponse(c, http.StatusNotFound, err.Error())
+		models.SendErrorResponse(c, http.StatusNotFound, err.Error())
 		return
 	}
 
 	var updateTodo models.Todo
 	err = c.BindJSON(&updateTodo)
 	if err != nil {
-		SendErrorResponse(c, http.StatusBadRequest, err.Error())
+		models.SendErrorResponse(c, http.StatusBadRequest, err.Error())
 		return
 	}
 
 	err = t.TodoService.Update(&todo, &updateTodo)
 	if err != nil {
-		SendErrorResponse(c, http.StatusInternalServerError, err.Error())
+		models.SendErrorResponse(c, http.StatusInternalServerError, err.Error())
 		return
 	}
 
@@ -156,23 +156,23 @@ func (t *TodoAPI) Update(c *gin.Context) {
 // @Failure 404 {object} models.APIError
 // @Failure 500 {object} models.APIError
 // @Router /todo/{id} [delete]
-func (t *TodoAPI) Delete(c *gin.Context) {
+func (t *TodoController) Delete(c *gin.Context) {
 	p := c.Param("id")
 	id, err := strconv.Atoi(p)
 	if err != nil {
-		SendErrorResponse(c, http.StatusBadRequest, err.Error())
+		models.SendErrorResponse(c, http.StatusBadRequest, err.Error())
 		return
 	}
 
 	todo, err := t.TodoService.FindById(uint(id))
 	if err != nil {
-		SendErrorResponse(c, http.StatusNotFound, err.Error())
+		models.SendErrorResponse(c, http.StatusNotFound, err.Error())
 		return
 	}
 
 	err = t.TodoService.DeleteById(&todo, uint(id))
 	if err != nil {
-		SendErrorResponse(c, http.StatusInternalServerError, err.Error())
+		models.SendErrorResponse(c, http.StatusInternalServerError, err.Error())
 		return
 	}
 

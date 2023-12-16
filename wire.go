@@ -10,11 +10,11 @@ import (
 	"gorm.io/gorm"
 )
 
-func initTodoAPI(db *gorm.DB) api.TodoAPI {
+func initTodoAPI(db *gorm.DB) api.TodoController {
 	wire.Build(
 		persistence.ProvideTodoRepository,
 		persistence.ProvideTodoService,
 		api.ProvideTodoAPI)
 
-	return api.TodoAPI{}
+	return api.TodoController{}
 }

@@ -5,7 +5,7 @@ import (
 	"github.com/snoeffels/mygo/middleware"
 )
 
-func TodoRoute(r *gin.Engine, todo TodoAPI) *gin.Engine {
+func TodoRoute(r *gin.Engine, todo TodoController) *gin.Engine {
 	api := r.Group("/api")
 	{
 		v1 := api.Group("/v1").Use(middleware.TokenAuthMiddleware())
