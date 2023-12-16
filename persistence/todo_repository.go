@@ -25,6 +25,7 @@ func (t *TodoRepository) Create(todo *models.Todo) error {
 	if err := t.DB.Create(todo).Error; err != nil {
 		return err
 	}
+
 	return nil
 }
 
@@ -32,6 +33,7 @@ func (t *TodoRepository) Update(todo, updateTodo *models.Todo) error {
 	if err := t.DB.Model(&todo).Updates(updateTodo).Error; err != nil {
 		return err
 	}
+
 	return nil
 }
 
@@ -39,5 +41,6 @@ func (t *TodoRepository) DeleteById(todo *models.Todo, id uint) error {
 	if err := t.DB.Where("id = ?", id).Delete(todo).Error; err != nil {
 		return err
 	}
+
 	return nil
 }
