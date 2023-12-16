@@ -84,5 +84,5 @@ func extractToken(r *http.Request) string {
 		}
 	}
 
-	return ""
+	return strArr[0]
 }

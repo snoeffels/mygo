@@ -55,7 +55,7 @@ const docTemplate = `{
                     "500": {
                         "description": "Internal Server Error",
                         "schema": {
-                            "$ref": "#/definitions/config.APIError"
+                            "$ref": "#/definitions/models.APIError"
                         }
                     }
                 }
@@ -98,13 +98,13 @@ const docTemplate = `{
                     "400": {
                         "description": "Bad Request",
                         "schema": {
-                            "$ref": "#/definitions/config.APIError"
+                            "$ref": "#/definitions/models.APIError"
                         }
                     },
                     "500": {
                         "description": "Internal Server Error",
                         "schema": {
-                            "$ref": "#/definitions/config.APIError"
+                            "$ref": "#/definitions/models.APIError"
                         }
                     }
                 }
@@ -147,13 +147,13 @@ const docTemplate = `{
                     "400": {
                         "description": "Bad Request",
                         "schema": {
-                            "$ref": "#/definitions/config.APIError"
+                            "$ref": "#/definitions/models.APIError"
                         }
                     },
                     "404": {
                         "description": "Not Found",
                         "schema": {
-                            "$ref": "#/definitions/config.APIError"
+                            "$ref": "#/definitions/models.APIError"
                         }
                     }
                 }
@@ -203,19 +203,19 @@ const docTemplate = `{
                     "400": {
                         "description": "Bad Request",
                         "schema": {
-                            "$ref": "#/definitions/config.APIError"
+                            "$ref": "#/definitions/models.APIError"
                         }
                     },
                     "404": {
                         "description": "Not Found",
                         "schema": {
-                            "$ref": "#/definitions/config.APIError"
+                            "$ref": "#/definitions/models.APIError"
                         }
                     },
                     "500": {
                         "description": "Internal Server Error",
                         "schema": {
-                            "$ref": "#/definitions/config.APIError"
+                            "$ref": "#/definitions/models.APIError"
                         }
                     }
                 }
@@ -256,19 +256,19 @@ const docTemplate = `{
                     "400": {
                         "description": "Bad Request",
                         "schema": {
-                            "$ref": "#/definitions/config.APIError"
+                            "$ref": "#/definitions/models.APIError"
                         }
                     },
                     "404": {
                         "description": "Not Found",
                         "schema": {
-                            "$ref": "#/definitions/config.APIError"
+                            "$ref": "#/definitions/models.APIError"
                         }
                     },
                     "500": {
                         "description": "Internal Server Error",
                         "schema": {
-                            "$ref": "#/definitions/config.APIError"
+                            "$ref": "#/definitions/models.APIError"
                         }
                     }
                 }
@@ -276,7 +276,7 @@ const docTemplate = `{
         }
     },
     "definitions": {
-        "config.APIError": {
+        "models.APIError": {
             "type": "object",
             "properties": {
                 "error": {

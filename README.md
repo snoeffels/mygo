@@ -5,7 +5,7 @@ It uses gorm as ORM with Postgres and also uses JWT auth middleware
 if GIN_MODE=release is set in .env / .env-docker
 
 The project also offers a generated swagger ui at [http://localhost:8080/swagger-ui/index.html](http://localhost:8080/swagger-ui/index.html)
-- eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMjM0NTY3ODkwIiwibmFtZSI6IkpvaG4gRG9lIiwiaWF0IjoxNTE2MjM5MDIyfQ.vZa-SKJgVgooNmaQeYbk8KxbsSohjoDm0-_rxm96FZw
+- Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMjM0NTY3ODkwIiwibmFtZSI6IkpvaG4gRG9lIiwiaWF0IjoxNTE2MjM5MDIyfQ.5mhBHqs5_DTLdINd9p5m7ZJ6XD0Xc55kIaCRY5r6HRA
 
 ### Resources
 - [Gin WebFramework](https://github.com/gin-gonic/gin)
@@ -32,7 +32,7 @@ go build .
 ```shell
 curl https://reqbin.com/echo/get/json
    -H "Accept: application/json"
-   -H "Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMjM0NTY3ODkwIiwibmFtZSI6IkpvaG4gRG9lIiwiaWF0IjoxNTE2MjM5MDIyfQ.vZa-SKJgVgooNmaQeYbk8KxbsSohjoDm0-_rxm96FZw"
+   -H "Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMjM0NTY3ODkwIiwibmFtZSI6IkpvaG4gRG9lIiwiaWF0IjoxNTE2MjM5MDIyfQ.5mhBHqs5_DTLdINd9p5m7ZJ6XD0Xc55kIaCRY5r6HRA"
 ```
 
 ### Generate swagger

@@ -24,7 +24,7 @@ func ProvideTodoAPI(t persistence.TodoService) TodoAPI {
 // @Accept application/json
 // @Produce application/json
 // @Success 200 {array} models.Todo
-// @Failure 500 {object} config.APIError
+// @Failure 500 {object} models.APIError
 // @Router /todo [get]
 func (t *TodoAPI) FindAll(c *gin.Context) {
 	// Usage Roles
@@ -51,8 +51,8 @@ func (t *TodoAPI) FindAll(c *gin.Context) {
 // @Produce application/json
 // @Param todo body models.Todo true "Create Todo"
 // @Success 200 {object} models.Todo
-// @Failure 400 {object} config.APIError
-// @Failure 500 {object} config.APIError
+// @Failure 400 {object} models.APIError
+// @Failure 500 {object} models.APIError
 // @Router /todo [post]
 func (t *TodoAPI) Create(c *gin.Context) {
 	var todo models.Todo
@@ -79,8 +79,8 @@ func (t *TodoAPI) Create(c *gin.Context) {
 // @Produce application/json
 // @Param id path integer true "ID"
 // @Success 200 {object} models.Todo
-// @Failure 400 {object} config.APIError
-// @Failure 404 {object} config.APIError
+// @Failure 400 {object} models.APIError
+// @Failure 404 {object} models.APIError
 // @Router /todo/{id} [get]
 func (t *TodoAPI) FindById(c *gin.Context) {
 	p := c.Param("id")
@@ -109,9 +109,9 @@ func (t *TodoAPI) FindById(c *gin.Context) {
 // @Param id path integer true "ID"
 // @Param todo body models.Todo true "Update Todo"
 // @Success 200 {object} models.Todo
-// @Failure 400 {object} config.APIError
-// @Failure 404 {object} config.APIError
-// @Failure 500 {object} config.APIError
+// @Failure 400 {object} models.APIError
+// @Failure 404 {object} models.APIError
+// @Failure 500 {object} models.APIError
 // @Router /todo/{id} [put]
 func (t *TodoAPI) Update(c *gin.Context) {
 	p := c.Param("id")
@@ -152,9 +152,9 @@ func (t *TodoAPI) Update(c *gin.Context) {
 // @Produce application/json
 // @Param id path integer true "ID"
 // @Success 204 {string} {}
-// @Failure 400 {object} config.APIError
-// @Failure 404 {object} config.APIError
-// @Failure 500 {object} config.APIError
+// @Failure 400 {object} models.APIError
+// @Failure 404 {object} models.APIError
+// @Failure 500 {object} models.APIError
 // @Router /todo/{id} [delete]
 func (t *TodoAPI) Delete(c *gin.Context) {
 	p := c.Param("id")

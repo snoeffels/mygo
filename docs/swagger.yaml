@@ -1,6 +1,6 @@
 basePath: /api/v1
 definitions:
-  config.APIError:
+  models.APIError:
     properties:
       error:
         type: string
@@ -50,7 +50,7 @@ paths:
         "500":
           description: Internal Server Error
           schema:
-            $ref: '#/definitions/config.APIError'
+            $ref: '#/definitions/models.APIError'
       security:
       - ApiKeyAuth: []
       summary: FindAll Todo List
@@ -77,11 +77,11 @@ paths:
         "400":
           description: Bad Request
           schema:
-            $ref: '#/definitions/config.APIError'
+            $ref: '#/definitions/models.APIError'
         "500":
           description: Internal Server Error
           schema:
-            $ref: '#/definitions/config.APIError'
+            $ref: '#/definitions/models.APIError'
       security:
       - ApiKeyAuth: []
       summary: Create Todo
@@ -108,15 +108,15 @@ paths:
         "400":
           description: Bad Request
           schema:
-            $ref: '#/definitions/config.APIError'
+            $ref: '#/definitions/models.APIError'
         "404":
           description: Not Found
           schema:
-            $ref: '#/definitions/config.APIError'
+            $ref: '#/definitions/models.APIError'
         "500":
           description: Internal Server Error
           schema:
-            $ref: '#/definitions/config.APIError'
+            $ref: '#/definitions/models.APIError'
       security:
       - ApiKeyAuth: []
       summary: Delete Todo
@@ -142,11 +142,11 @@ paths:
         "400":
           description: Bad Request
           schema:
-            $ref: '#/definitions/config.APIError'
+            $ref: '#/definitions/models.APIError'
         "404":
           description: Not Found
           schema:
-            $ref: '#/definitions/config.APIError'
+            $ref: '#/definitions/models.APIError'
       security:
       - ApiKeyAuth: []
       summary: FindById Todo
@@ -178,15 +178,15 @@ paths:
         "400":
           description: Bad Request
           schema:
-            $ref: '#/definitions/config.APIError'
+            $ref: '#/definitions/models.APIError'
         "404":
           description: Not Found
           schema:
-            $ref: '#/definitions/config.APIError'
+            $ref: '#/definitions/models.APIError'
         "500":
           description: Internal Server Error
           schema:
-            $ref: '#/definitions/config.APIError'
+            $ref: '#/definitions/models.APIError'
       security:
       - ApiKeyAuth: []
       summary: Update Todo

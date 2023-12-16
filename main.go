@@ -4,6 +4,7 @@ import (
 	"database/sql"
 	"github.com/gin-contrib/cors"
 	"github.com/gin-gonic/gin"
+	_ "github.com/google/subcommands"
 	"github.com/joho/godotenv"
 	"github.com/snoeffels/mygo/api"
 	"github.com/snoeffels/mygo/config"

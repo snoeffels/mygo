@@ -13,6 +13,7 @@ import (
 )
 
 import (
+	_ "github.com/google/subcommands"
 	_ "github.com/snoeffels/mygo/docs"
 )
 
