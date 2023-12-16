@@ -35,7 +35,7 @@ func (t *TodoAPI) FindAll(c *gin.Context) {
 
 	todos, err := t.TodoService.FindAll()
 	if err != nil {
-		c.JSON(http.StatusInternalServerError, gin.H{"error": err.Error()})
+		c.JSON(http.StatusInternalServerError, models.APIError{Error: err.Error()})
 		return
 	}
 
@@ -58,12 +58,12 @@ func (t *TodoAPI) Create(c *gin.Context) {
 	var todo models.Todo
 	err := c.BindJSON(&todo)
 	if err != nil {
-		c.JSON(http.StatusBadRequest, gin.H{"error": err.Error()})
+		c.JSON(http.StatusBadRequest, models.APIError{Error: err.Error()})
 		return
 	}
 	err = t.TodoService.Create(&todo)
 	if err != nil {
-		c.JSON(http.StatusInternalServerError, gin.H{"error": err.Error()})
+		c.JSON(http.StatusInternalServerError, models.APIError{Error: err.Error()})
 		return
 	}
 
@@ -86,7 +86,7 @@ func (t *TodoAPI) FindById(c *gin.Context) {
 	p := c.Param("id")
 	id, err := strconv.Atoi(p)
 	if err != nil {
-		c.JSON(http.StatusBadRequest, gin.H{"error": err.Error()})
+		c.JSON(http.StatusBadRequest, models.APIError{Error: err.Error()})
 		return
 	}
 
@@ -117,7 +117,7 @@ func (t *TodoAPI) Update(c *gin.Context) {
 	p := c.Param("id")
 	id, err := strconv.Atoi(p)
 	if err != nil {
-		c.JSON(http.StatusBadRequest, gin.H{"error": err.Error()})
+		c.JSON(http.StatusBadRequest, models.APIError{Error: err.Error()})
 		return
 	}
 
@@ -130,13 +130,13 @@ func (t *TodoAPI) Update(c *gin.Context) {
 	var updateTodo models.Todo
 	err = c.BindJSON(&updateTodo)
 	if err != nil {
-		c.JSON(http.StatusBadRequest, gin.H{"error": err.Error()})
+		c.JSON(http.StatusBadRequest, models.APIError{Error: err.Error()})
 		return
 	}
 
 	err = t.TodoService.Update(&todo, &updateTodo)
 	if err != nil {
-		c.JSON(http.StatusInternalServerError, gin.H{"error": err.Error()})
+		c.JSON(http.StatusInternalServerError, models.APIError{Error: err.Error()})
 		return
 	}
 
@@ -160,7 +160,7 @@ func (t *TodoAPI) Delete(c *gin.Context) {
 	p := c.Param("id")
 	id, err := strconv.Atoi(p)
 	if err != nil {
-		c.JSON(http.StatusBadRequest, gin.H{"error": err.Error()})
+		c.JSON(http.StatusBadRequest, models.APIError{Error: err.Error()})
 		return
 	}
 
@@ -172,7 +172,7 @@ func (t *TodoAPI) Delete(c *gin.Context) {
 
 	err = t.TodoService.DeleteById(&todo, uint(id))
 	if err != nil {
-		c.JSON(http.StatusInternalServerError, gin.H{"error": err.Error()})
+		c.JSON(http.StatusInternalServerError, models.APIError{Error: err.Error()})
 		return
 	}
 
