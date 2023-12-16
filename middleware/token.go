@@ -4,6 +4,7 @@ import (
 	"fmt"
 	"github.com/dgrijalva/jwt-go"
 	"github.com/gin-gonic/gin"
+	"github.com/snoeffels/mygo/models"
 	"net/http"
 	"os"
 	"strings"
@@ -17,14 +18,14 @@ func TokenAuthMiddleware() gin.HandlerFunc {
 
 			token := c.Request.Header.Get("Authorization")
 			if token == "" {
-				c.JSON(http.StatusForbidden, gin.H{"error": "No Authorization header provided"})
+				c.JSON(http.StatusForbidden, models.APIError{Error: "No authorization header provided"})
 				c.Abort()
 				return
 			}
 
 			_, err := tokenValid(c.Request)
 			if err != nil {
-				c.JSON(http.StatusUnauthorized, gin.H{"error": "Unauthorized"})
+				c.JSON(http.StatusUnauthorized, models.APIError{Error: "Unauthorized"})
 				c.Abort()
 				return
 			}
