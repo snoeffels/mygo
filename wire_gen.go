@@ -7,9 +7,8 @@
 package main
 
 import (
-	"github.com/snoeffels/mygo/controllers"
-	"github.com/snoeffels/mygo/repositories"
-	"github.com/snoeffels/mygo/services"
+	"github.com/snoeffels/mygo/api"
+	"github.com/snoeffels/mygo/persistence"
 	"gorm.io/gorm"
 )
 
@@ -19,9 +18,9 @@ import (
 
 // Injectors from wire.go:
 
-func initTodoAPI(db *gorm.DB) controllers.TodoAPI {
-	todoRepository := repositories.ProvideTodoRepository(db)
-	todoService := services.ProvideTodoService(todoRepository)
-	todoAPI := controllers.ProvideTodoAPI(todoService)
+func initTodoAPI(db *gorm.DB) api.TodoAPI {
+	todoRepository := persistence.ProvideTodoRepository(db)
+	todoService := persistence.ProvideTodoService(todoRepository)
+	todoAPI := api.ProvideTodoAPI(todoService)
 	return todoAPI
 }

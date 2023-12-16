@@ -1,18 +1,18 @@
-package controllers
+package api
 
 import (
 	"github.com/gin-gonic/gin"
 	"github.com/snoeffels/mygo/models"
-	"github.com/snoeffels/mygo/services"
+	"github.com/snoeffels/mygo/persistence"
 	"net/http"
 	"strconv"
 )
 
 type TodoAPI struct {
-	TodoService services.TodoService
+	TodoService persistence.TodoService
 }
 
-func ProvideTodoAPI(t services.TodoService) TodoAPI {
+func ProvideTodoAPI(t persistence.TodoService) TodoAPI {
 	return TodoAPI{TodoService: t}
 }
 

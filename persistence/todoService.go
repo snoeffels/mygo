@@ -1,15 +1,14 @@
-package services
+package persistence
 
 import (
 	"github.com/snoeffels/mygo/models"
-	"github.com/snoeffels/mygo/repositories"
 )
 
 type TodoService struct {
-	TodoRepository repositories.TodoRepository
+	TodoRepository TodoRepository
 }
 
-func ProvideTodoService(t repositories.TodoRepository) TodoService {
+func ProvideTodoService(t TodoRepository) TodoService {
 	return TodoService{TodoRepository: t}
 }
 

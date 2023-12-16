@@ -5,17 +5,16 @@ package main
 
 import (
 	"github.com/google/wire"
-	"github.com/snoeffels/mygo/controllers"
-	"github.com/snoeffels/mygo/repositories"
-	"github.com/snoeffels/mygo/services"
+	"github.com/snoeffels/mygo/api"
+	"github.com/snoeffels/mygo/persistence"
 	"gorm.io/gorm"
 )
 
-func initTodoAPI(db *gorm.DB) controllers.TodoAPI {
+func initTodoAPI(db *gorm.DB) api.TodoAPI {
 	wire.Build(
-		repositories.ProvideTodoRepository,
-		services.ProvideTodoService,
-		controllers.ProvideTodoAPI)
+		persistence.ProvideTodoRepository,
+		persistence.ProvideTodoService,
+		api.ProvideTodoAPI)
 
-	return controllers.TodoAPI{}
+	return api.TodoAPI{}
 }

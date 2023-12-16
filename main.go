@@ -5,9 +5,9 @@ import (
 	"github.com/gin-contrib/cors"
 	"github.com/gin-gonic/gin"
 	"github.com/joho/godotenv"
+	"github.com/snoeffels/mygo/api"
 	"github.com/snoeffels/mygo/config"
 	_ "github.com/snoeffels/mygo/docs"
-	"github.com/snoeffels/mygo/routes"
 	swaggerFiles "github.com/swaggo/files"
 	ginSwagger "github.com/swaggo/gin-swagger"
 	"gorm.io/gorm"
@@ -74,7 +74,7 @@ func initRoutes(dbHandler dbHandlers) *gin.Engine {
 	r.Use(cors.New(conf))
 
 	todoAPI := initTodoAPI(dbHandler.db)
-	routes.TodoRoute(r, todoAPI)
+	api.TodoRoute(r, todoAPI)
 
 	r.GET("/swagger/*any", ginSwagger.WrapHandler(swaggerFiles.Handler))
 

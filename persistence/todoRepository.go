@@ -1,4 +1,4 @@
-package repositories
+package persistence
 
 import (
 	"github.com/snoeffels/mygo/models"
