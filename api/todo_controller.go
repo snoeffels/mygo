@@ -128,7 +128,7 @@ func (t *TodoAPI) Update(c *gin.Context) {
 	}
 
 	var updateTodo models.Todo
-	err = c.BindJSON(&updateTodo)
+	err = c.BindJSON(&todo)
 	if err != nil {
 		models.SendErrorResponse(c, http.StatusBadRequest, err.Error())
 		return

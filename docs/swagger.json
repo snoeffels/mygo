@@ -279,6 +279,9 @@
             "properties": {
                 "error": {
                     "type": "string"
+                },
+                "status": {
+                    "type": "integer"
                 }
             }
         },

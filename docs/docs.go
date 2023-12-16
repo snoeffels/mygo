@@ -281,6 +281,9 @@ const docTemplate = `{
             "properties": {
                 "error": {
                     "type": "string"
+                },
+                "status": {
+                    "type": "integer"
                 }
             }
         },
